@@ -2,7 +2,10 @@ import java.util.Scanner;
 public class Teatrod{
     public static void main (String [] args){
         Scanner scanner = new Scanner (System.in);
-        
+         int opcao;
+         do {
+             
+         
         System.out.println("*******BEM VINDO AO TEATRO DEVISATE*******");
         System.out.println(" 1- Cadastro da sala");
         System.out.println(" 2- Reservar um lugar");
@@ -14,10 +17,36 @@ public class Teatrod{
         System.out.println(" 8- Sair");
         
         System.out.println("Escolha uma opção DE 1 a 8: ");
-         int opcao = scanner.nextInt();
-        if (opcao > 8 || opcao < 1){
-            System.out.println("Erro: Escolha opções apenas de 1 a 8");
+          opcao = scanner.nextInt();
+        switch (opcao){
+            case 1:
+                System.out.println("Entrando pra cadastrar a sala");
+                break;
+            case 2:
+                System.out.println("Reservando seu lugar");
+                break;
+            case 3:
+                System.out.println("Comprando seu lugar");
+                break;
+            case 4:
+                System.out.println("Cancelando sua resrrva");
+                break;
+            case 5:
+                System.out.println("Exibindo o mapa de sala");
+                break;
+            case 6:
+                System.out.println("Relatorio financeiro");
+                break;
+            case 7:
+                System.out.println("Menu de exercícios");
+                break;
+            case 8:
+                System.out.println("Saindo.."); 
+                break;
+            default:
+                System.out.println("Escolha uma opçao de 1 a 8");/* default é o else do switch*/ 
         }
+        } while (opcao != 8);
 
     }
 }
