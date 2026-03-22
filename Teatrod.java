@@ -39,7 +39,17 @@ public class Teatrod{
                 System.out.println("Cancelando sua resrrva");
                 break;
             case 5:
-                System.out.println("Exibindo o mapa de sala");
+                System.out.println("O mapa da sala");
+                for (int linha = 0; linha < 12; linha++) {
+                    char lLinha = (char) ('A' + linha);
+                    System.out.print(lLinha + "");
+                for (int coluna = 0; coluna < 12; coluna++) {
+                    char comolugar = lugares[linha][coluna];
+                    String letra = (comolugar == 'L')? "[ ]": (comolugar == 'R')? "[R]" : "[X]";
+                    System.out.print(letra + " "); 
+                  }     
+                  System.out.println(); 
+                }
                 break;
             case 6:
                 System.out.println("Relatorio financeiro");
