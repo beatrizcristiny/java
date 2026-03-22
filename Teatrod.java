@@ -3,6 +3,13 @@ public class Teatrod{
     public static void main (String [] args){
         Scanner scanner = new Scanner (System.in);
          int opcao;
+
+         char [][] lugares  = new char [12][12];
+         for (int linha = 0; linha < 12; linha++){
+            for (int coluna = 0; coluna < 12; coluna++){
+                lugares[linha][coluna] = 'L';
+            }
+         }
          do {
              
          
