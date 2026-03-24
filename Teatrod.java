@@ -31,6 +31,21 @@ public class Teatrod{
                 break;
             case 2:
                 System.out.println("Reservando seu lugar");
+                System.out.println("Digite a linha que quer: ");
+                char linha2 = scanner.next().toUpperCase().charAt(0);
+                System.out.println("Digite a coluna que quer: ");
+                int coluna2 = scanner.nextInt();
+                int l = linha2 - 'A';
+                int c = coluna2 - 1;
+                if(l >= 0 && l < 12 && c >= 0 && c < 12){
+                if (lugares[l][c] == 'L') {
+                    lugares[l][c] = 'R';
+                    System.out.println("O lugar está reservado");
+                }else {
+                    System.out.println("O lugar já está ocupado");
+                }}else{
+                    System.out.println("Posição incorreta");
+                }
                 break;
             case 3:
                 System.out.println("Comprando seu lugar");
