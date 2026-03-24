@@ -4,11 +4,11 @@ public class Teatrod{
         Scanner scanner = new Scanner (System.in);
          int opcao;
 
-         char [][] lugares  = new char [12][12];
-         for (int linha = 0; linha < 12; linha++){
-            for (int coluna = 0; coluna < 12; coluna++){
-                lugares[linha][coluna] = 'L';
-            }
+         char [][][] lugares  = new char [5][12][12];
+         for (int s = 0; s < 5; s++) {
+             for (int l = 0; l < 12; i++) {
+                 
+             }
          }
          do {
              
