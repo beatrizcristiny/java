@@ -3,13 +3,17 @@ public class Teatrod{
     public static void main (String [] args){
         Scanner scanner = new Scanner (System.in);
          int opcao;
+         int sala = 0;
 
          char [][][] lugares  = new char [5][12][12];
-         for (int s = 0; s < 5; s++) {
-             for (int l = 0; l < 12; i++) {
-                 
+         for (sala = 0; sala < 5; sala++) {
+             for (int linha = 0; linha < 12; linha++) {
+                 for (int coluna = 0; coluna < 12 ; coluna++) {
+                     lugares [sala][linha][coluna] = 'L';
+                 }
              }
          }
+         sala = 0;
          do {
              
          
@@ -30,16 +34,23 @@ public class Teatrod{
                 System.out.println("Entrando pra cadastrar a sala");
                 break;
             case 2:
+                 System.out.println("Digite a sala que quer: ");
+                 sala = scanner.nextInt();
+                 if (sala < 1 || sala > 5) {
+                     System.out.println("A sala não existe");
+                     break;
+                 }
                 System.out.println("Reservando seu lugar");
                 System.out.println("Digite a linha que quer: ");
                 char linha2 = scanner.next().toUpperCase().charAt(0);
                 System.out.println("Digite a coluna que quer: ");
                 int coluna2 = scanner.nextInt();
+               
                 int l = linha2 - 'A';
                 int c = coluna2 - 1;
                 if(l >= 0 && l < 12 && c >= 0 && c < 12){
-                if (lugares[l][c] == 'L') {
-                    lugares[l][c] = 'R';
+                if (lugares[sala - 1][l][c] == 'L') {
+                    lugares[sala - 1][l][c] = 'R';
                     System.out.println("O lugar está reservado");
                 }else {
                     System.out.println("O lugar já está ocupado");
@@ -59,7 +70,7 @@ public class Teatrod{
                     char lLinha = (char) ('A' + linha);
                     System.out.print(lLinha + "");
                 for (int coluna = 0; coluna < 12; coluna++) {
-                    char comolugar = lugares[linha][coluna];
+                    char comolugar = lugares[sala][linha][coluna];
                     String letra = (comolugar == 'L')? "[ ]": (comolugar == 'R')? "[R]" : "[X]";
                     System.out.print(letra + " "); 
                   }     
