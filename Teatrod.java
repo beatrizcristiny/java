@@ -8,8 +8,8 @@ public class Teatrod{
          String[] nomedoespetac = {"Os conflitos", "A desordem", "Briga de casados", "A coleta", "As cores"};
          double[] ingressototal = {50.0, 60.0, 40.0, 80.0, 55.0};
          double[] ingressomeia = {25.0, 30.0, 20.0, 40.0, 27.5};
-         String[] extitulo = {}
-         String[] exenunciado = {}
+         String[] extitulo = {"Par ou ímpar", "Maior de dois números", "Aprovação escolar", "Classificação de temperatura", "Calculadora simples", "Ano bissexto", "Triângulo valido", "IMC", "Dia da semana", "Positivo, negativo ou zero", "Ingresso de cinema", "Nota por conceito", "Estação do ano", "Maior de três números", "Verificador de login", "Múltiplo de 3 e 5", "Desconto em compra", "Número romano", "Velocidade e multa", "Pedra, papel e tesoura"};
+         String[] exenunciado = {"Verifique se um número é par ou ímpar", "Receba dois números e mostre o maior", "Leia a média de um aluno (0 a 10) e exiba aprovadose média >=7, recuperação se media >=5 e <7 e reprovado se média <5", "Leia a temperatura em gaus celsius e classifique: abaixo de 15 graus = frio, entre 15 e 25 graus = agradável e acima de 25 graus = quente", "Leia dois números e um operador (+, -. *, /) e realize a operação correspondente", "Leia um ano e informe se ele é bissexto ou não", "Leia três lados e verifique se formam um triângulo válido, se sim indentifique se é: equilátero, isóceles ou escaleno", "Leia o peso em kg e a altura em metros, calcule o IMC e indentifique IMC < 18.5 = abaixo do peso, se 18.5 <= IMC < 25 = peso normal, se 25<= IMC <30 = sobrepeso e IMC >= 30 = obesidade e por fim diga se está dentro ou fora do peso", "Leia um número de 1 a 7 e exiba o nome do dia da semana correspondente, e para qualquer outro número digitado exiba dia inválido", "Leia um número e informe se ele é positivo, negativo ou zero", "Uma sala de cinema cobra: para menores de 12 anos = 10,00, entre 12 e 60 anos = 20,00 e acima de 60 anos = 10,00, leia a idade e exiba o valor do ingresso", "Leia uma nota de 0 a 10 e exiba: 9 a 10 = A, 7 a 8 = B, 5 a 6 = C, 0 a 4 = D", "Leia o número do mês e exiba a estação do ano correspondente (considerando o hemisfério sul)", "Leia três números e exiba o maior deles e trate o caso de empate", "Defina um usuário e senha fixos no código, leia o usuário e senha digitados e exiba: acesso permitido ou acesso negado", "Leia um número e informe se: é múltiplo de 3 e 5 simultaneamente, se é mútiplo de 3 apenas, se é só múltiplo de 5 e se não é míltiplo de nenhum", "Uma loja da o desconto conforme o valor da compra: acima de 500 reais é 20% de desconto, entre 200 e 500 reais é 10% de desconto e abaixo de 200 reais é sem desconto. Leia o valor e exiba quanto ficou no final após o desconto", "Leia um número de 1 a 10 e exiba seu equivalente em algarismo romano", "Leia a velocidade de um veículo e o limite da via: se dentro do limite é sem multa, se é ate 20% acima é multa leve, se é entre 20% e 50% acima é uma multa grave e se for acima de 50% é uma multa gravissima + a suspensão", "Leia a escolha de dois jogadores (pedra papel ou tesoura) e determine quem venceu ou se houve empate e exiba o resultado no final."};
 
          char [][][] lugares  = new char [5][12][12];
          for (sala = 0; sala < 5; sala++) {
@@ -189,7 +189,36 @@ public class Teatrod{
                 System.out.println("Receita máxima: " +receitamax);
                 break;
             case 7:
-                System.out.println("Menu de exercícios");
+               
+                int paginaAtual = 0;
+                int intensPorPagina = 7;
+                int totalExercicios = 20;
+                int totalPaginas = (int) Math.ceil((double) totalExercicios / intensPorPagina);
+                String opcaoo;
+                do {
+                    int inicio = paginaAtual * intensPorPagina;
+                    int fim = Math.min(inicio + intensPorPagina, totalExercicios);
+                   System.out.println("Menu de exercícios");
+                   for (int i = inicio; i < fim ; i++) {
+                       System.out.println((i + 1) + " - " + extitulo[i]);
+                   }
+                   if (paginaAtual > 0) System.out.println("A - Página anterior");
+                   if (paginaAtual < totalPaginas - 1) System.out.println("P - Proxíma página");
+                   System.out.println("V - Voltar ao menu inicial");
+                   System.out.println("Escolha: ");
+                   opcaoo = scanner.next().toUpperCase();
+                   if (opcaoo.equals("P") && paginaAtual < totalPaginas - 1) paginaAtual++;
+                   else if (opcaoo.equals("A") && paginaAtual > 0)paginaAtual--;
+                   else if (!opcaoo.equals("V")){
+                    int n = Integer.parseInt(opcaoo) - 1;
+                    if (n >= 0 && n < totalExercicios){
+                        System.out.println(extitulo[n]);
+                        System.out.println(exenunciado[n]);
+                    }
+                   }
+                       
+                   
+                } while (!opcaoo.equals("V"));
                 break;
             case 8:
                 System.out.println("Saindo.."); 
