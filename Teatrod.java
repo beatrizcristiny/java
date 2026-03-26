@@ -122,11 +122,16 @@ public class Teatrod{
                 break;
             case 5:
                 System.out.println("O mapa da sala");
+                System.out.println("Digite a sala que deseja: ")
+                sala = scanner.nextInt();
+                if(sala < 1 || sala > 12){
+                    System.out.println("A sala não existe")
+                }
                 for (int linha = 0; linha < 12; linha++) {
                     char lLinha = (char) ('A' + linha);
                     System.out.print(lLinha + "");
                 for (int coluna = 0; coluna < 12; coluna++) {
-                    char comolugar = lugares[sala][linha][coluna];
+                    char comolugar = lugares[sala - 1][linha][coluna];
                     String letra = (comolugar == 'L')? "[ ]": (comolugar == 'R')? "[R]" : "[X]";
                     System.out.print(letra + " "); 
                   }     
