@@ -122,11 +122,13 @@ public class Teatrod{
                 break;
             case 5:
                 System.out.println("O mapa da sala");
-                System.out.println("Digite a sala que deseja: ")
+                System.out.println("Digite a sala que deseja: ");
                 sala = scanner.nextInt();
                 if(sala < 1 || sala > 12){
-                    System.out.println("A sala não existe")
+                    System.out.println("A sala não existe");
                 }
+                System.out.println("SALA: " +nomedasala[sala - 1]);
+                System.out.println("ESPETÁCULO: " +nomedoespetac[sala - 1]);
                 for (int linha = 0; linha < 12; linha++) {
                     char lLinha = (char) ('A' + linha);
                     System.out.print(lLinha + "");
@@ -135,6 +137,23 @@ public class Teatrod{
                     String letra = (comolugar == 'L')? "[ ]": (comolugar == 'R')? "[R]" : "[X]";
                     System.out.print(letra + " "); 
                   }     
+                  int livres = 0;
+                  int reservadas = 0;
+                  int ocupadas = 0;
+                  for (int linha = 0; linha < 12; linha++){
+                    for(int coluna = 0; coluna < 12; coluna++){
+                        if (lugares[sala - 1][linha][coluna] == 'L'){ 
+                        livre++;
+                        }else if (lugares[sala - 1][linha][coluna] == 'R'){
+                          reservadas++;  
+                        } else {
+                             ocupadas++;
+                        }
+                    }
+                  }
+                  System.out.println("[ ] Livre                [R] Reservada               [X] Ocupada");
+                  System.out.println("Livres: "+livres+    "Reservadas: "+reservadas+     "Ocupadas: "+ocupadas);
+                  }
                   System.out.println(); 
                 }
                 break;
@@ -153,4 +172,3 @@ public class Teatrod{
         } while (opcao != 8);
 
     }
-}
