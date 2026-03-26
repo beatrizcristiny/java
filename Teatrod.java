@@ -4,6 +4,10 @@ public class Teatrod{
         Scanner scanner = new Scanner (System.in);
          int opcao;
          int sala = 0;
+         String[] nomedasala = {"Sala da abelhinha", "Sala colmeia", "Sala 2 amores", "Sala borboletas", "Sala das flores"};
+         String[] nomedoespetac = {"Os conflitos", "A desordem", "Briga de casados", "A coleta", "As cores"};
+         double[] ingressototal = {50.0, 60.0, 40.0, 80.0, 55.0};
+         double[] ingressomeia = {25.0, 30.0, 20.0, 40.0, 27.5};
 
          char [][][] lugares  = new char [5][12][12];
          for (sala = 0; sala < 5; sala++) {
@@ -31,8 +35,17 @@ public class Teatrod{
           opcao = scanner.nextInt();
         switch (opcao){
             case 1:
-                System.out.println("Entrando pra cadastrar a sala");
+                System.out.println("Salas disponíveis: ");
+                for (int i = 0; i < 5 ; i++) {
+                    System.out.println((i + 1) +" - "+ nomedasala[i]);
+                    System.out.println(" O preço do ingresso total é : " +ingressototal[i]);
+                    System.out.println(" O preço do ingresso meia é: " +ingressomeia[i]);
+                    System.out.println(" O espetáculo é: " +nomedoespetac[i]);
+
+                    
+                }
                 break;
+                
             case 2:
                  System.out.println("Digite a sala que quer: ");
                  sala = scanner.nextInt();
@@ -60,9 +73,52 @@ public class Teatrod{
                 break;
             case 3:
                 System.out.println("Comprando seu lugar");
-                break;
+                System.out.println("Digite a sala que deseja: ");
+                sala = scanner.nextInt();
+                if (sala < 1 || sala > 5) {
+                    System.out.println("A sala não existe");
+                    break;
+                    }
+                    System.out.println("Digite a linha que quer: ");
+                      char linha3 = scanner.next().toUpperCase().charAt(0);
+                      System.out.println("Digite a coluna que quer: ");
+                      int coluna3 = scanner.nextInt();
+                      int l3 = linha3 - 'A';
+                      int c3 = coluna3 - 1;
+                    if (lugares [sala - 1][l3][c3] == 'L') {
+                        lugares[sala - 1][l3][c3] = 'X';
+                        System.out.println(" O lugar é na sala " +nomedasala[sala - 1]+ " O espetaculo é: " +nomedoespetac[sala - 1]+ " O valor do ingresso é: " +ingressototal[sala - 1]);
+                    }else if (lugares [sala - 1][l3][c3] == 'R') {
+                        lugares[sala - 1][l3][c3] = 'X';
+                        System.out.println(" O lugar é na sala " +nomedasala[sala - 1]+ " O espetaculo é: " +nomedoespetac[sala - 1]+ " O valor do ingresso é: " +ingressomeia[sala - 1]);
+                    } else {
+                        System.out.println("O lugar já está ocupado");
+                    }
+                break; 
             case 4:
-                System.out.println("Cancelando sua resrrva");
+                System.out.println("Cancelando sua reserva");
+                 System.out.println("Digite a sala que deseja: ");
+                sala = scanner.nextInt();
+                if (sala < 1 || sala > 5) {
+                    System.out.println("A sala não existe");
+                    break;
+                    }
+                    System.out.println("Digite a linha que quer: ");
+                      char linha4 = scanner.next().toUpperCase().charAt(0);
+                      System.out.println("Digite a coluna que quer: ");
+                      int coluna4 = scanner.nextInt();
+                      int l4 = linha4 - 'A';
+                      int c4 = coluna4 - 1;
+                      if (lugares[sala - 1][l4][c4] == 'R') {
+                           lugares[sala -1][l4][c4] = 'L';
+                           System.out.println("O lugar foi cancelado o valor do estorno é: " +ingressomeia[sala - 1]);
+                      }else if (lugares[sala -1][l4][c4] == 'L') {
+                        System.out.println("Não é possível cancelar algo que não existe");
+                          
+                      } else {
+                          System.out.println("O lugar está ocupado");
+                      }
+
                 break;
             case 5:
                 System.out.println("O mapa da sala");
