@@ -8,6 +8,8 @@ public class Teatrod{
          String[] nomedoespetac = {"Os conflitos", "A desordem", "Briga de casados", "A coleta", "As cores"};
          double[] ingressototal = {50.0, 60.0, 40.0, 80.0, 55.0};
          double[] ingressomeia = {25.0, 30.0, 20.0, 40.0, 27.5};
+         String[] extitulo = {}
+         String[] exenunciado = {}
 
          char [][][] lugares  = new char [5][12][12];
          for (sala = 0; sala < 5; sala++) {
@@ -158,6 +160,33 @@ public class Teatrod{
                 break;
             case 6:
                 System.out.println("Relatorio financeiro");
+                System.out.println("Digite a sala que deseja: ");
+                sala = scanner.nextInt();
+                if (sala < 1 || sala > 5) {
+                    System.out.println("A sala não existe");
+                  break;
+                }
+                int livres2 = 0;
+                int reservadas2 = 0;
+                int ocupadas2 = 0;
+                for (int linha = 0; linha < 12; linha++){
+                    for(int coluna = 0; coluna < 12; coluna++){
+                        if(lugares[sala - 1][linha][coluna] == 'L')livres2++;
+                        else if (lugares[sala - 1][linha][coluna] == 'R') reservadas2++;
+                        else ocupadas2++;
+                    }
+                }
+                double totalarrecadado = ocupadas2 * ingressototal[sala - 1];
+                double totalreservas = reservadas2 * ingressomeia[sala - 1];
+                double receitap = totalarrecadado + (reservadas2 * ingressomeia[sala - 1]);
+                double receitamax = totalarrecadado + (reservadas2 * ingressomeia[sala - 1]) + (livres2 * ingressototal[sala - 1]);
+
+                System.out.println("Total de cadeiras livres: " +livres2);
+                System.out.println("Total de cadeeiras reservadas: " +reservadas2);
+                System.out.println("Total arrecadado: " +totalarrecadado);
+                System.out.println("Total em reservas: " +totalreservas);
+                System.out.println("Receita potencial: " +receitap);
+                System.out.println("Receita máxima: " +receitamax);
                 break;
             case 7:
                 System.out.println("Menu de exercícios");
