@@ -128,6 +128,7 @@ public class Teatrod{
                 sala = scanner.nextInt();
                 if(sala < 1 || sala > 5){
                     System.out.println("A sala não existe");
+                    break;
                 }
                 System.out.println("SALA: " +nomedasala[sala - 1]);
                 System.out.println("ESPETÁCULO: " +nomedoespetac[sala - 1]);
@@ -183,6 +184,7 @@ public class Teatrod{
 
                 System.out.println("Total de cadeiras livres: " +livres2);
                 System.out.println("Total de cadeeiras reservadas: " +reservadas2);
+                System.out.println("Total de cadeiras ocupadas: " +ocupadas2);
                 System.out.println("Total arrecadado: " +totalarrecadado);
                 System.out.println("Total em reservas: " +totalreservas);
                 System.out.println("Receita potencial: " +receitap);
